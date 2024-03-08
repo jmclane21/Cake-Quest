@@ -42,7 +42,7 @@ class Title extends Phaser.Scene{
     update(){
         if(Phaser.Input.Keyboard.JustDown(keyJ) || Phaser.Input.Keyboard.JustDown(keySPACE)){
             this.sound.play('menu_select')
-            this.scene.start('playScene')
+            this.scene.start('level1Scene')
         }
         if(Phaser.Input.Keyboard.JustDown(keyTAB)){
             this.sound.play('menu_select')

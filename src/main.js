@@ -3,6 +3,8 @@
  *  
  */
 
+'use strict'
+
 let config  = {
     type: Phaser.AUTO,
     width: 640,
@@ -14,7 +16,7 @@ let config  = {
             debug: true
         },
     },
-    scene: [Load, Title, Play, Credits]
+    scene: [Load, Title, Level1, Credits]
 }
 
 let game = new Phaser.Game(config);

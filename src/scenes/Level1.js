@@ -1,12 +1,15 @@
-class Play extends Phaser.Scene{
+class Level1 extends Phaser.Scene{
     constructor(){
-        super('playScene')
+        super('level1Scene')
     }
 
     create(){
-        //make background
+        //add tilemap
+        const map = this.add.tilemap('level1JSON')
+        const tileset = map.addTilesetImage('tileset', 'tilesetImage')
 
-        //add floor
+        const bgLayer = map.createLayer('Background', tileset, 0,0)
+        const terrainLayer = map.createLayer('Terrain', tileset, 0, 0)
 
         //add player obj
 
