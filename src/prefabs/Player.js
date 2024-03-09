@@ -56,7 +56,9 @@ class IdleState extends State {
         }
 
         if(space.isDown || up.isDown){
-            this.stateMachine.transition('jump')
+            if(player.body.blocked.down){
+                this.stateMachine.transition('jump')
+            }
         }
     }
 }
@@ -86,7 +88,9 @@ class MoveState extends State {
         }
 
         if(space.isDown || up.isDown){
-            this.stateMachine.transition('jump')
+            if(player.body.blocked.down){
+                this.stateMachine.transition('jump')
+            }
         }
 
         // handle movement
@@ -110,6 +114,7 @@ class MoveState extends State {
 class JumpState extends State{
     enter(scene, player) {
         //player.anims.play("jump");
+        scene.sound.play('jump_sound', {volume: .5})
         player.setVelocityY(-player.jumpVelocity);
         player.body.setAccelerationY(player.acceleration)
     }

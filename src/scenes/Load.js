@@ -13,7 +13,7 @@ class Load extends Phaser.Scene{
         this.load.image('mordekai_idle', './assets/mordekai_idle.png')
         this.load.image('rigby_idle', './assets/rigby_idle.png')
 
-
+        this.load.audio('jump_sound', './assets/jump.wav')
 
         this.load.bitmapFont('pixelFont', './assets/depixel_bold.png', './assets/depixel_bold.xml')
     }
