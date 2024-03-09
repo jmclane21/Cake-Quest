@@ -25,9 +25,9 @@ class Title extends Phaser.Scene{
         }
 
         //display menu text
-        this.add.text(game.config.width/2, game.config.height/2 - 90, 'Samurai Run', 
+        this.add.text(game.config.width/2, game.config.height/2 - 90, 'Cake Quest', 
         menuConfig).setOrigin(0.5)
-        this.add.text(game.config.width/2, game.config.height/2, 'Use Spacebar to jump & (J) to strike\nPress button to start\nTAB for Credits', menuConfig).
+        this.add.text(game.config.width/2, game.config.height/2, 'Use Spacebar to jump & (J) to strike\nPress SPACE to start\nENTER for Credits', menuConfig).
         setOrigin(0.5)
         menuConfig.backgroundColor = '#00FF00'
         menuConfig.color = '#000'
@@ -35,17 +35,16 @@ class Title extends Phaser.Scene{
         let keyboardInput = this.input.keyboard
         let keycode = Phaser.Input.Keyboard.KeyCodes
         keySPACE = keyboardInput.addKey(keycode.SPACE)
-        keyJ = keyboardInput.addKey(keycode.J)
-        keyTAB = keyboardInput.addKey(keycode.TAB)
+        keyENTER = keyboardInput.addKey(keycode.ENTER)
     }
 
     update(){
-        if(Phaser.Input.Keyboard.JustDown(keyJ) || Phaser.Input.Keyboard.JustDown(keySPACE)){
-            this.sound.play('menu_select')
+        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+            //this.sound.play('menu_select')
             this.scene.start('level1Scene')
         }
-        if(Phaser.Input.Keyboard.JustDown(keyTAB)){
-            this.sound.play('menu_select')
+        if(Phaser.Input.Keyboard.JustDown(keyENTER)){
+            //this.sound.play('menu_select')
             this.scene.start('creditsScene')
         }
     }

@@ -12,7 +12,7 @@ let config  = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: {y: 2600},
+            gravity: {y: 300},
             debug: true
         },
     },
@@ -21,5 +21,5 @@ let config  = {
 
 let game = new Phaser.Game(config);
 //reserved keyboard bindings
-let keySPACE, keyJ, keyRESET, keyTAB
+let keySPACE, keyLEFT, keyRIGHT, keyUP, keyDOWN, keyENTER
 let musicPlaying = false

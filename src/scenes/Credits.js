@@ -17,16 +17,15 @@ class Credits extends Phaser.Scene{
             fixedWidth: 0
         }
         this.add.text(game.config.width/2, this.game.config.height/2,
-            `Made by Jackson McLane\nSoundFX made in ChipTone by SFB Games\nMusic: 8-bit Game\nby moodmode on Pixabay\nInspired by\n Samurai Blitz by Studio ThunderHorse\nPress TAB to exit to Start`,
+            `Made by Jackson McLane\nBased on Regular Show\nPress ENTER to return to Title`,
             scoreConfig).setOrigin(.5)
-
-        keyTAB = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB)
+        keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
     }
 
     update(){
-        if(Phaser.Input.Keyboard.JustDown(keyTAB)){
-            this.sound.play('menu_select')
-            this.scene.start('menuScene')
+        if(Phaser.Input.Keyboard.JustDown(keyENTER)){
+            //this.sound.play('menu_select')
+            this.scene.start('titleScene')
         }
     }
 }
