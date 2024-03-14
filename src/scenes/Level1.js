@@ -13,15 +13,21 @@ class Level1 extends Phaser.Scene{
 
         terrainLayer.setCollisionByExclusion([-1])
 
+        //init spawn points
+        const player_spawn = map.findObject('Spawns', (obj) => obj.name === 'player_spawn')
+        const cake_spawn = map.findObject('Spawns', (obj) => obj.name === 'cake')
+
         //add player obj
-        this.player = new Player(this, 40, 300, 'mordekai_idle', 0, 'mordekai')
+        this.player = new Player(this, player_spawn.x, player_spawn.y, 'mordekai_idle', 0, 'mordekai').setOrigin(.5, 1)
 
-        //add enemy objs
-
-        //enemy group
+        //add cake obj
+        this.cake = this.physics.add.sprite(cake_spawn.x, cake_spawn.y, 'cake').setImmovable(true)
+        this.cake.body.setSize(this.cake.width/2, this.cake.height/1.5)
+        this.cake.body.setAllowGravity(false)
 
         //init collision handling
         this.terrainCollider = this.physics.add.collider(this.player, terrainLayer)
+        this.cakeCollider = this.physics.add.overlap(this.player, this.cake, this.cakeCollide, null, this)
 
         
         //Define input
@@ -58,14 +64,10 @@ class Level1 extends Phaser.Scene{
 
     update(){
         this.playerFSM.step()
-        
-        if(!this.gameover){
-
-        }
-        else{
-
-        }
     }
 
     //Collision handlers HERE
+    cakeCollide(player, cake){
+        this.scene.start('titleScene')
+    }
 }
