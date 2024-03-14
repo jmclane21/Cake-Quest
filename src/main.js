@@ -20,15 +20,7 @@ let config  = {
     scale: {
         //mode: Phaser.Scale.NONE,
         mode: Phaser.Scale.FIT,
-        //mode: Phaser.Scale.ENVELOP,
-        //mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
-        //mode: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
-        //mode: Phaser.Scale.EXPAND,
-        //mode: Phaser.Scale.RESIZE,
-        //autoCenter: Phaser.Scale.NO_CENTER,
-        //autoCenter: Phaser.Scale.HORIZONTALLY,
-        //autoCenter: Phaser.Scale.VERTICALLY,
-        autoCenter: Phaser.Scale.CENTER_BOTH
+        autoCenter: Phaser.Scale.HORIZONTALLY,
     },
     scene: [Load, Title, Character, Level1, Credits]
 }

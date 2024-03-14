@@ -11,6 +11,8 @@ class Title extends Phaser.Scene{
         //     musicPlaying = true
         // }
 
+        this.cameras.main.setBackgroundColor(0x012700)
+
         //display text
         this.add.bitmapText(game.config.width/5, game.config.height/5, 'pixel_font', 'CAKE\n      Quest').postFX.addGlow('0x2ef699', 2, 0)
 
@@ -28,7 +30,7 @@ class Title extends Phaser.Scene{
     update(){
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
             //this.sound.play('menu_select')
-            this.scene.start('level1Scene')
+            this.scene.start('characterScene')
         }
         if(Phaser.Input.Keyboard.JustDown(keyENTER)){
             //this.sound.play('menu_select')

@@ -13,6 +13,7 @@ class Load extends Phaser.Scene{
         this.load.image('mordekai_idle', './assets/mordekai_idle.png')
         this.load.image('rigby_idle', './assets/rigby_idle.png')
         this.load.image('cake', './assets/cake.png')
+        this.load.image('box', './assets/box.png')
 
 
         this.load.audio('jump_sound', './assets/jump.wav')

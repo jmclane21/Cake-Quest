@@ -17,8 +17,10 @@ class Level1 extends Phaser.Scene{
         const player_spawn = map.findObject('Spawns', (obj) => obj.name === 'player_spawn')
         const cake_spawn = map.findObject('Spawns', (obj) => obj.name === 'cake')
 
+        let character = this.game.settings.character
+
         //add player obj
-        this.player = new Player(this, player_spawn.x, player_spawn.y, 'mordekai_idle', 0, 'mordekai').setOrigin(.5, 1)
+        this.player = new Player(this, player_spawn.x, player_spawn.y, `${character}_idle`, 0, `${character}`).setOrigin(.5, 1)
 
         //add cake obj
         this.cake = this.physics.add.sprite(cake_spawn.x, cake_spawn.y, 'cake').setImmovable(true)
