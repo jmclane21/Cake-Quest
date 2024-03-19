@@ -16,11 +16,20 @@ class Level1 extends Phaser.Scene{
         //init spawn points
         const player_spawn = map.findObject('Spawns', (obj) => obj.name === 'player_spawn')
         const cake_spawn = map.findObject('Spawns', (obj) => obj.name === 'cake')
+        const barrel_spawn = map.findObject('Spawns', (obj) => obj.name === 'barrel')
 
         let character = this.game.settings.character
 
         //add player obj
         this.player = new Player(this, player_spawn.x, player_spawn.y, `${character}_idle`, 0, `${character}`).setOrigin(.5, 1)
+
+        //add barrel
+        this.barrel = this.physics.add.sprite(barrel_spawn.x, barrel_spawn.y, 'barrel').setOrigin(0,.5)
+        //this.barrel.setSize(this.barrel.width/2, this.barrel.height/2)
+        this.barrel.setCircle(this.barrel.width/2, 0, 10)
+        this.barrel.setScale(.8)
+        this.barrel.setImmovable(true)
+        this.barrel.body.setAllowGravity(false)
 
         //add cake obj
         this.cake = this.physics.add.sprite(cake_spawn.x, cake_spawn.y, 'cake').setImmovable(true)
@@ -30,6 +39,7 @@ class Level1 extends Phaser.Scene{
         //init collision handling
         this.terrainCollider = this.physics.add.collider(this.player, terrainLayer)
         this.cakeCollider = this.physics.add.overlap(this.player, this.cake, this.cakeCollide, null, this)
+        this.barrelCollider = this.physics.add.collider(this.player, this.barrel)
 
         
         //Define input

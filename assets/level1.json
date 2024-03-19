@@ -100,8 +100,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":699.83868966373,
-                 "y":246.928899367167
+                 "x":699.839,
+                 "y":246.929
                 }, 
                 {
                  "height":0,
@@ -114,6 +114,18 @@
                  "width":0,
                  "x":65,
                  "y":384
+                }, 
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"barrel",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":150,
+                 "y":385
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -122,7 +134,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":3,
+ "nextobjectid":5,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

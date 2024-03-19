@@ -27,7 +27,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 class IdleState extends State {
     enter(scene, player) {
         player.setVelocity(0)
-        //player.anims.play(`${character}_idle`)
+        player.setTexture(`${player.character}_idle`)
         //player.anims.stop()
     }
 
@@ -113,7 +113,7 @@ class MoveState extends State {
 
 class JumpState extends State{
     enter(scene, player) {
-        //player.anims.play("jump");
+        player.setTexture(`${player.character}_jump`)
         scene.sound.play('jump_sound', {volume: .5})
         player.setVelocityY(-player.jumpVelocity);
         player.body.setAccelerationY(player.acceleration)
