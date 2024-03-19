@@ -4,21 +4,17 @@ class Credits extends Phaser.Scene{
     }
 
     create(){
-        let scoreConfig = {
-            fontFamily: 'Courier',
-            fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
-            align: 'center',
-            padding: {
-                top: 5,
-                bottom: 5,
-            },
-            fixedWidth: 0
-        }
-        this.add.text(game.config.width/2, this.game.config.height/2,
-            `Made by Jackson McLane\nBased on Regular Show\nPress ENTER to return to Title`,
-            scoreConfig).setOrigin(.5)
+        
+        this.text = this.add.bitmapText(game.config.width/2, game.config.height/5, 'pixel_font', 
+        `Made by Jackson McLane
+
+Based on Regular Show
+        
+Press ENTER to return to Title`, 
+            20, Phaser.GameObjects.BitmapText.ALIGN_CENTER)
+        this.text.postFX.addGlow('0x2ef699', 1.5, 0)
+        this.text.setOrigin(.5,0)
+
         keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
     }
 

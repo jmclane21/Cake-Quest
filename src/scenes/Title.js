@@ -18,6 +18,9 @@ class Title extends Phaser.Scene{
 
         this.add.bitmapText(game.config.width*4/5, game.config.height*3/5, 'pixel_font', 'PRESS\n SPACE', 14).postFX.addGlow('0x2ef699', 1.5, 0)
 
+        this.creditText = this.add.bitmapText(game.config.width*3.3/5, game.config.height*4/5, 'pixel_font', 'press ENTER for Credits', 12).postFX.addGlow('0x2ef699', 1.5, 0)
+
+
         this.add.sprite(180, game.config.height-90, 'mordekai_idle').setScale(5)
         this.add.sprite(360, game.config.height-70, 'rigby_idle').setScale(3)
 
