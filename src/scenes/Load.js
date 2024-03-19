@@ -11,8 +11,10 @@ class Load extends Phaser.Scene{
 
         this.load.image('mordekai_idle', './assets/mordekai_idle.png')
         this.load.image('mordekai_jump', './assets/mordekai_jump.png')
+        this.load.image('mordekai_head', './assets/mordekai_head.png')
         this.load.image('rigby_idle', './assets/rigby_idle.png')
         this.load.image('rigby_jump', './assets/rigby_jump.png')
+        this.load.image('rigby_head', './assets/rigby_head.png')
 
         this.load.image('barrel', './assets/barrel.png')
         this.load.image('cake', './assets/cake.png')

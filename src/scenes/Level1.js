@@ -53,7 +53,7 @@ class Level1 extends Phaser.Scene{
         this.cameras.main.startFollow(this.player, true, 1, 1, 0, 20);
 
         // Set zoom & pan camera
-        this.cameras.main.setZoom(1);
+        this.cameras.main.setZoom(1.3);
         this.cameras.main.setBounds(
             0,
             0,

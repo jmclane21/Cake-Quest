@@ -6,7 +6,7 @@ class Character extends Phaser.Scene{
     create(){
         this.cameras.main.setBackgroundColor(0x012700)
         this.text = this.add.bitmapText(game.config.width/2, game.config.height/5, 'pixel_font', 'CHOOSE YOUR HERO:', 20, Phaser.GameObjects.BitmapText.ALIGN_CENTER)
-        this.text.postFX.addGlow('0x2ef699', 2, 0)
+        this.text.postFX.addGlow('0x2ef699', 1.5, 0)
         this.text.setOrigin(.5,0)
 
         this.mordekai = this.add.sprite(game.config.width/6, game.config.height-100, 'mordekai_idle').setOrigin(0,1).setScale(2)
@@ -37,9 +37,10 @@ class Character extends Phaser.Scene{
         if(this.keys.keySPACE.isDown || this.keys.keyENTER.isDown){
             //this.sound.play('menu_select')
             game.settings = {
-                character: this.character
+                character: this.character,
+                lives: 5
             }
-            this.scene.start('level1Scene')
+            this.scene.start('liveScene')
         }
     }
 }
