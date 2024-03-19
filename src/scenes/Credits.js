@@ -7,6 +7,8 @@ class Credits extends Phaser.Scene{
         
         this.text = this.add.bitmapText(game.config.width/2, game.config.height/5, 'pixel_font', 
         `Made by Jackson McLane
+Music: Chiptune Grooving by 8059346
+SoundFX Made using jsfxr
 
 Based on Regular Show
         

@@ -4,12 +4,12 @@ class Title extends Phaser.Scene{
     }
 
     create(){
-        // let backgroundMusic = this.sound.add('background_music')
-        // backgroundMusic.loop = true
-        // if(!musicPlaying){
-        //     backgroundMusic.play()
-        //     musicPlaying = true
-        // }
+        let backgroundMusic = this.sound.add('music')
+        backgroundMusic.loop = true
+        if(!musicPlaying){
+            backgroundMusic.play()
+            musicPlaying = true
+        }
 
         this.cameras.main.setBackgroundColor(0x012700)
 

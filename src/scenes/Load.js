@@ -10,6 +10,8 @@ class Load extends Phaser.Scene{
         this.load.tilemapTiledJSON('level1JSON', './assets/level1.json')
         this.load.tilemapTiledJSON('level2JSON', './assets/level2.json')
 
+        this.load.audio('music', './assets/chiptune_grooving.mp3')
+
         this.load.image('mordekai_idle', './assets/mordekai_idle.png')
         this.load.image('mordekai_jump', './assets/mordekai_jump.png')
         this.load.image('mordekai_head', './assets/mordekai_head.png')
