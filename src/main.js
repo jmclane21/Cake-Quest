@@ -23,7 +23,7 @@ let config  = {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.HORIZONTALLY,
     },
-    scene: [Load, Title, Character, Lives, Level1, Credits]
+    scene: [Load, Title, Character, Lives, Level1, Credits, GameOver]
 }
 
 let game = new Phaser.Game(config);

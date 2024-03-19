@@ -6,7 +6,7 @@ class Level1 extends Phaser.Scene{
     create(){
         //add tilemap
         const map = this.add.tilemap('level1JSON')
-        const tileset = map.addTilesetImage('tileset', 'tilesetImage')
+        const tileset = map.addTilesetImage('tileset', 'tilesetImage', 16, 16, 1, 2)
 
         const bgLayer = map.createLayer('Background', tileset, 0,0)
         const terrainLayer = map.createLayer('Terrain', tileset, 0, 0)
@@ -22,6 +22,9 @@ class Level1 extends Phaser.Scene{
 
         //add player obj
         this.player = new Player(this, player_spawn.x, player_spawn.y, `${character}_idle`, 0, `${character}`).setOrigin(.5, 1)
+        if(character === 'rigby'){
+            this.player.setScale(.8)
+        }
 
         //add barrel
         this.barrel = this.physics.add.sprite(barrel_spawn.x, barrel_spawn.y, 'barrel').setOrigin(0,.5)
@@ -33,7 +36,7 @@ class Level1 extends Phaser.Scene{
 
         //add cake obj
         this.cake = this.physics.add.sprite(cake_spawn.x, cake_spawn.y, 'cake').setImmovable(true)
-        this.cake.body.setSize(this.cake.width/2, this.cake.height/1.5)
+        this.cake.body.setSize(this.cake.width/1.8, this.cake.height/1.5)
         this.cake.body.setAllowGravity(false)
 
         //init collision handling
@@ -53,7 +56,7 @@ class Level1 extends Phaser.Scene{
         this.cameras.main.startFollow(this.player, true, 1, 1, 0, 20);
 
         // Set zoom & pan camera
-        this.cameras.main.setZoom(1.3);
+        this.cameras.main.setZoom(1.2);
         this.cameras.main.setBounds(
             0,
             0,
@@ -67,7 +70,7 @@ class Level1 extends Phaser.Scene{
             0,
             0,
             map.widthInPixels,
-            map.heightInPixels
+            map.heightInPixels+300
         );
 
         //gameover flag
@@ -75,11 +78,16 @@ class Level1 extends Phaser.Scene{
     }
 
     update(){
-        this.playerFSM.step()
+        if(this.game.settings.lives > 0){
+            this.playerFSM.step()
+        }
+        else{
+            this.scene.start('gameOverScene')
+        }
     }
 
     //Collision handlers HERE
     cakeCollide(player, cake){
-        this.scene.start('titleScene')
+        this.scene.start('gameOverScene')
     }
 }

@@ -7,7 +7,7 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
 
         this.body.setSize(this.width / 4, this.height/1.5)
-        //this.body.setCollideWorldBounds(true)
+        this.body.setCollideWorldBounds(true)
 
         this.character = character
         this.velocity = 150    // in pixels
