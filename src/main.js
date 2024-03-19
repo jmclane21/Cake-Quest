@@ -1,6 +1,11 @@
 /** Cake Quest by Jackson McLane
  *  Based off the game shown in Regular Show S7 EP6
- *  
+ *  Phaser Components Used:
+ *  Phyiscs
+ *  Cameras
+ *  Text Objects
+ *  Timers
+ *  Pipeline FX
  */
 
 'use strict'

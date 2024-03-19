@@ -50,6 +50,10 @@ class Level1 extends Phaser.Scene{
         this.barrelCollider = this.physics.add.collider(this.player, this.barrel)
         this.deadzoneCollider = this.physics.add.collider(this.player, this.deadzone, this.fall, null, this)
 
+        //controls text
+        this.text = this.add.bitmapText(player_spawn.x + 50, player_spawn.y - 200,'pixel_font', 'Arrows to Move\n\nSPACE to Jump', 10, Phaser.GameObjects.BitmapText.ALIGN_CENTER)
+        this.text.postFX.addGlow('0x2ef699', 1.5, 0)
+        this.text.setOrigin(.5,0)
         
         //Define input
         let keyboardInput = this.input.keyboard

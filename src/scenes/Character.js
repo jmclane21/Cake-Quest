@@ -14,6 +14,10 @@ class Character extends Phaser.Scene{
 
         this.box = this.add.sprite(this.mordekai.x, this.mordekai.y, 'box').setOrigin(0,1).setScale(2)
 
+        this.subtext = this.add.bitmapText(game.config.width/2, game.config.height*4/5, 'pixel_font', 'Use Arrows to Move\n\nENTER or SPACE to Select', 20, Phaser.GameObjects.BitmapText.ALIGN_CENTER)
+        this.subtext.postFX.addGlow('0x2ef699', 1.5, 0)
+        this.subtext.setOrigin(.5,0)
+
         this.character = 'mordekai'
 
         let keyboardInput = this.input.keyboard
