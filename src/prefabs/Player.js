@@ -11,8 +11,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         this.character = character
         this.velocity = 150    // in pixels
-        this.jumpVelocity = 250
-        this.acceleration = 150
+        this.jumpVelocity = 400
+        this.acceleration = 700
 
         // initialize state machine managing player (initial state, possible states, state args[])
         scene.playerFSM = new StateMachine('idle', {

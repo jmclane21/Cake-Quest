@@ -14,7 +14,7 @@ let config  = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: {y: 300},
+            gravity: {y: 800},
             debug: true
         },
     },
@@ -23,7 +23,7 @@ let config  = {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.HORIZONTALLY,
     },
-    scene: [Load, Title, Character, Lives, Level1, Credits, GameOver]
+    scene: [Load, Title, Character, Lives, Level1, Level2, Credits, GameOver]
 }
 
 let game = new Phaser.Game(config);

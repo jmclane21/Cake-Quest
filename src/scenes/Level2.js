@@ -1,11 +1,11 @@
-class Level1 extends Phaser.Scene{
+class Level2 extends Phaser.Scene{
     constructor(){
-        super('level1Scene')
+        super('level2Scene')
     }
 
     create(){
         //add tilemap
-        const map = this.add.tilemap('level1JSON')
+        const map = this.add.tilemap('level2JSON')
         const tileset = map.addTilesetImage('tileset', 'tilesetImage', 16, 16, 1, 2)
 
         const bgLayer = map.createLayer('Background', tileset, 0,0)
@@ -16,7 +16,8 @@ class Level1 extends Phaser.Scene{
         //init spawn points
         const player_spawn = map.findObject('Spawns', (obj) => obj.name === 'player_spawn')
         const cake_spawn = map.findObject('Spawns', (obj) => obj.name === 'cake')
-        const barrel_spawn = map.findObject('Spawns', (obj) => obj.name === 'barrel')
+        this.bug_spawn_1 = map.findObject('Spawns', (obj) => obj.name === 'bug_spawn_1')
+        this.bug_spawn_2 = map.findObject('Spawns', (obj) => obj.name === 'bug_spawn_2')
 
         let character = this.game.settings.character
 
@@ -26,18 +27,18 @@ class Level1 extends Phaser.Scene{
             this.player.setScale(.8)
         }
 
-        //add barrel
-        this.barrel = this.physics.add.sprite(barrel_spawn.x, barrel_spawn.y, 'barrel').setOrigin(0,.5)
-        //this.barrel.setSize(this.barrel.width/2, this.barrel.height/2)
-        this.barrel.setCircle(this.barrel.width/2, 0, 10)
-        this.barrel.setScale(.8)
-        this.barrel.setImmovable(true)
-        this.barrel.body.setAllowGravity(false)
-
         //add cake obj
         this.cake = this.physics.add.sprite(cake_spawn.x, cake_spawn.y, 'cake').setImmovable(true)
         this.cake.body.setSize(this.cake.width/1.8, this.cake.height/1.5)
         this.cake.body.setAllowGravity(false)
+
+        //add bug
+        this.bug = this.physics.add.sprite(this.bug_spawn_1.x, this.bug_spawn_1.y, 'bug')
+        //this.bug = this.physics.add.sprite(player_spawn.x + 100, player_spawn.y, 'bug')
+        this.bug.setOrigin(.5, 1)
+        this.bug.body.setSize(this.bug.body.width/2, this.bug.body.height/4)
+        this.bug.body.setOffset(30, 60)
+        this.bug.setVelocityX(50)
 
         //add death box
         this.deadzone = this.add.rectangle(0, map.heightInPixels + 100, map.widthInPixels*16, 10, 0xFFFFFF, 0)
@@ -45,10 +46,10 @@ class Level1 extends Phaser.Scene{
         this.deadzone.body.setAllowGravity(false)
 
         //init collision handling
-        this.terrainCollider = this.physics.add.collider(this.player, terrainLayer)
+        this.terrainCollider = this.physics.add.collider([this.player, this.bug], terrainLayer)
         this.cakeCollider = this.physics.add.overlap(this.player, this.cake, this.cakeCollide, null, this)
         this.barrelCollider = this.physics.add.collider(this.player, this.barrel)
-        this.deadzoneCollider = this.physics.add.collider(this.player, this.deadzone, this.fall, null, this)
+        this.enemyCollider = this.physics.add.collider(this.player, [this.deadzone, this.bug], this.die, null, this)
 
         
         //Define input
@@ -86,6 +87,16 @@ class Level1 extends Phaser.Scene{
     update(){
         if(this.game.settings.lives > 0){
             this.playerFSM.step()
+
+            if(this.bug.x <= this.bug_spawn_1.x){
+                this.bug.setVelocityX(50)
+                this.bug.setFlipX(true)
+            }
+            if(this.bug.x >= this.bug_spawn_2.x){
+                this.bug.setVelocityX(-50)
+                this.bug.setFlipX(false)
+            }
+
         }
         else{
             this.scene.start('gameOverScene')
@@ -94,10 +105,10 @@ class Level1 extends Phaser.Scene{
 
     //Collision handlers HERE
     cakeCollide(player, cake){
-        this.scene.start('level2Scene')
+        this.scene.start('gameOverScene')
     }
 
-    fall(player, deadzone){
+    die(player, deadzone){
         this.game.settings.lives -= 1
         this.scene.restart()
     }

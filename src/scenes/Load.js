@@ -8,6 +8,7 @@ class Load extends Phaser.Scene{
 
         this.load.image('tilesetImage', './assets/tileset_extruded.png')
         this.load.tilemapTiledJSON('level1JSON', './assets/level1.json')
+        this.load.tilemapTiledJSON('level2JSON', './assets/level2.json')
 
         this.load.image('mordekai_idle', './assets/mordekai_idle.png')
         this.load.image('mordekai_jump', './assets/mordekai_jump.png')
@@ -16,6 +17,7 @@ class Load extends Phaser.Scene{
         this.load.image('rigby_jump', './assets/rigby_jump.png')
         this.load.image('rigby_head', './assets/rigby_head.png')
 
+        this.load.image('bug', './assets/bug.png')
         this.load.image('barrel', './assets/barrel.png')
         this.load.image('cake', './assets/cake.png')
         this.load.image('box', './assets/box.png')
