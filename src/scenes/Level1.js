@@ -39,10 +39,16 @@ class Level1 extends Phaser.Scene{
         this.cake.body.setSize(this.cake.width/1.8, this.cake.height/1.5)
         this.cake.body.setAllowGravity(false)
 
+        //add death box
+        this.deadzone = this.add.rectangle(100, game.config.height + 100, map.widthInPixels, 10, 0xFFFFFF, 0)
+        this.physics.add.existing(this.deadzone)
+        this.deadzone.body.setAllowGravity(false)
+
         //init collision handling
         this.terrainCollider = this.physics.add.collider(this.player, terrainLayer)
         this.cakeCollider = this.physics.add.overlap(this.player, this.cake, this.cakeCollide, null, this)
         this.barrelCollider = this.physics.add.collider(this.player, this.barrel)
+        this.deadzoneCollider = this.physics.add.collider(this.player, this.deadzone, this.fall, null, this)
 
         
         //Define input
@@ -89,5 +95,10 @@ class Level1 extends Phaser.Scene{
     //Collision handlers HERE
     cakeCollide(player, cake){
         this.scene.start('gameOverScene')
+    }
+
+    fall(player, deadzone){
+        this.game.settings.lives -= 1
+        this.scene.restart()
     }
 }
