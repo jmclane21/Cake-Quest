@@ -20,9 +20,16 @@ class Load extends Phaser.Scene{
         this.load.image('bug', './assets/bug.png')
         this.load.image('barrel', './assets/barrel.png')
         this.load.image('cake', './assets/cake.png')
+        this.load.spritesheet('cake_detail', './assets/cake_detail.png', {
+            frameWidth: 64,
+            frameHeight: 64
+        })
+
         this.load.image('box', './assets/box.png')
 
         this.load.audio('jump_sound', './assets/jump.wav')
+        this.load.audio('cake_sound', './assets/powerUp.wav')
+        this.load.audio('hurt_sound', './assets/hitHurt.wav')
 
         this.load.bitmapFont('pixel_font', './assets/depixel_bold.png', './assets/depixel_bold.xml')
     }

@@ -20,9 +20,21 @@ class Title extends Phaser.Scene{
 
         this.creditText = this.add.bitmapText(game.config.width*3.3/5, game.config.height*4/5, 'pixel_font', 'press ENTER for Credits', 12).postFX.addGlow('0x2ef699', 1.5, 0)
 
-
         this.add.sprite(180, game.config.height-90, 'mordekai_idle').setScale(5)
         this.add.sprite(360, game.config.height-70, 'rigby_idle').setScale(3)
+
+        this.anims.create({
+            key: 'cake_blink',
+            frameRate: 2,
+            repeat: -1,
+            frames: this.anims.generateFrameNumbers('cake_detail', {
+                start: 0,
+                end: 1
+            })
+        })
+
+        this.cake = this.add.sprite(450, 120, 'cake_detail').setScale(3)
+        this.cake.anims.play('cake_blink')
 
         let keyboardInput = this.input.keyboard
         let keycode = Phaser.Input.Keyboard.KeyCodes

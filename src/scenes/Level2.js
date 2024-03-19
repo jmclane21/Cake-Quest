@@ -105,10 +105,12 @@ class Level2 extends Phaser.Scene{
 
     //Collision handlers HERE
     cakeCollide(player, cake){
+        this.sound.play('cake_sound')
         this.scene.start('gameOverScene')
     }
 
     die(player, deadzone){
+        this.sound.play('hurt_sound')
         this.game.settings.lives -= 1
         this.scene.restart()
     }
